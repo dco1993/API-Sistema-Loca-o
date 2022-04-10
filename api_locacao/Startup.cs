@@ -44,7 +44,12 @@ namespace api_locacao
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "api_locacao v1"));
+                app.UseSwaggerUI(c => { 
+
+                    c.RoutePrefix = "swagger";
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "api_locacao v1");
+
+                });
             }
 
             app.UseHttpsRedirection();

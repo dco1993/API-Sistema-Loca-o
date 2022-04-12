@@ -24,7 +24,7 @@ namespace api_locacao.Model
         [Required(ErrorMessage = "É necessário escolher a data de locação!")]
         public DateTime DataLocacao { get; set; }
 
-        [Display(Name = "Data para Devolução")]
+        [Display(Name = "Data de Devolução")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yy H:mm:ss}")]
         public DateTime DataDevolucao { get; set; }

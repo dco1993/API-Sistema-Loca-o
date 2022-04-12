@@ -19,12 +19,14 @@ namespace api_locacao.Data
             modelBuilder.Entity<LocacaoModel>()
             .HasOne(c => c.Cliente)
             .WithOne()
-            .HasForeignKey<LocacaoModel>(c => c.Id_Cliente);
+            .HasForeignKey<LocacaoModel>(c => c.Id_Cliente)
+            .IsRequired();
 
             modelBuilder.Entity<LocacaoModel>()
             .HasOne(f => f.Filme)
             .WithOne()
-            .HasForeignKey<LocacaoModel>(f => f.Id_Filme);
+            .HasForeignKey<LocacaoModel>(f => f.Id_Filme)
+            .IsRequired();
         }
     }
 }

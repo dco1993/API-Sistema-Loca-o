@@ -1,0 +1,72 @@
+﻿@model api_locacao.Model.LocacaoModel
+
+@{
+    Layout = null;
+}
+
+<div class="container">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-play"></i></i>&ensp;Detalhes da Locação</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div>
+                    <h4>Detalhes da Locação</h4>
+                    <hr />
+                    <dl class="row">
+                        <dt class = "col-sm-4">
+                            @Html.DisplayNameFor(model => model.Id)
+                        </dt>
+                        <dd class = "col-sm-8">
+                            @Html.DisplayFor(model => model.Id)
+                        </dd>
+                        <dt class = "col-sm-4">
+                            @Html.DisplayNameFor(model => model.Cliente.Nome)
+                        </dt>
+                        <dd class = "col-sm-8">
+                            @Html.DisplayFor(model => model.Cliente.Nome)
+                        </dd>
+                        <dt class = "col-sm-4">
+                            @Html.DisplayNameFor(model => model.Filme.Titulo)
+                        </dt>
+                        <dd class = "col-sm-8">
+                            @Html.DisplayFor(model => model.Filme.Titulo)
+                        </dd>
+                        <dt class = "col-sm-4">
+                            @Html.DisplayNameFor(model => model.DataLocacao)
+                        </dt>
+                        <dd class = "col-sm-8">
+                            @Html.DisplayFor(model => model.DataLocacao)
+                        </dd>
+                        <dt class = "col-sm-4">
+                            @Html.DisplayNameFor(model => model.DataDevolucao)
+                        </dt>
+                        <dd class = "col-sm-8">
+                            @Html.DisplayFor(model => model.DataDevolucao)
+                        </dd>
+                        <dt class = "col-sm-4">
+                            @Html.DisplayNameFor(model => model.Filme.Lancamento)
+                        </dt>
+                        <dd class = "col-sm-8">
+                            @Html.DisplayFor(model => model.Filme.Lancamento)
+                        </dd>
+                    </dl>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <a asp-controller="Locacoes" asp-action="Update" asp-route-id=@Model.Id><button type="button" class="btn btn-warning">Editar</button></a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+
+        </div>
+    </div>
+</div>

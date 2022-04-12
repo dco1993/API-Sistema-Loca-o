@@ -1,3 +1,5 @@
+using app_locacao.Data;
+using app_locacao.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +25,14 @@ namespace app_locacao
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IApiHandler, ApiHandler>();
+
+            services.AddScoped<IClienteService, ClienteService>();
+
+            services.AddScoped<IFilmeService, FilmeService>();
+
+            services.AddScoped<ILocacaoService, LocacaoService>();
+
             services.AddControllersWithViews();
         }
 

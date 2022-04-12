@@ -1,0 +1,79 @@
+﻿@model IEnumerable<api_locacao.Model.FilmeModel>
+
+@{
+    ViewData["Title"] = "Filmes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista de Filmes</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Filme</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassificacaoIndicativa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lancamento)
+            </th>
+            <th class="text-center">
+                Detalhes
+            </th>
+            <th class="text-center">
+                Excluir?
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassificacaoIndicativa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lancamento)
+            </td>
+
+            <td class="text-center"><a class="detail" data-toggle="modal" data-id="@item.Id"><i class="fas fa-info text-warning"></i></a></td>
+                
+            <td class="text-center"><a class="delete" data-toggle="modal" data-id="@item.Id"><i class="far fa-trash-alt text-danger"></i></a></td>
+
+        </tr>
+}
+    </tbody>
+</table>
+
+<div id="modal" class="modal fade" role="dialog" />
+
+@section scripts{
+    <script>
+
+        $(function () {
+
+            $(".detail").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("../Filmes/FilmeById/" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+
+            $(".delete").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("../Filmes/Delete/" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+
+        })
+
+    </script>
+}

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<api_locacao.Model.LocacaoModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filme.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataLocacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDevolucao)
+            </th>
+            <th class="text-center">
+                Detalhes
+            </th>
+            <th class="text-center">
+                Excluir?
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filme.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLocacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDevolucao)
+            </td>
+            
+            <td class="text-center"><a class="detail" data-toggle="modal" data-id="@item.Id"><i class="fas fa-info text-warning"></i></a></td>
+                
+            <td class="text-center"><a class="delete" data-toggle="modal" data-id="@item.Id"><i class="far fa-trash-alt text-danger"></i></a></td>
+
+        </tr>
+}
+    </tbody>
+</table>
+
+<div id="modal" class="modal fade" role="dialog" />
+
+@section scripts{
+    <script>
+
+        $(function () {
+
+            $(".detail").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("../Clientes/ClienteById/" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+
+            $(".delete").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("../Clientes/Delete/" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+
+        })
+
+    </script>
+}

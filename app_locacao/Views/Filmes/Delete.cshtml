@@ -1,0 +1,35 @@
+﻿@model api_locacao.Model.FilmeModel
+
+@{
+    Layout = null;
+}
+
+<div class="container">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="far fa-trash-alt"></i> &ensp;Deletar Filme?</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <form id="deleteForm" asp-action="Delete" method="post">
+                    <input asp-for="@Model.Id" type="hidden"/>
+                </form>
+            
+                <h5>Confirma a exclusão do filme @Model.Titulo?</h5>
+
+            </div>
+
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-danger" form="deleteForm" value="Exluir Filme"/>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+
+        </div>
+    </div>
+</div>

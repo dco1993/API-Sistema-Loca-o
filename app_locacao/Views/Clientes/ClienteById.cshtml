@@ -1,0 +1,54 @@
+﻿@model api_locacao.Model.ClienteModel
+
+@{
+    Layout = null;
+}
+
+<div class="container">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-user"></i>&ensp;Detalhes do Cliente</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <div>
+                    <hr />
+                    <h4>@Html.DisplayFor(model => model.Nome)</h4>
+                    <dl class="row">
+                        <dt class = "col-sm-4">
+                            @Html.DisplayNameFor(model => model.Id)
+                        </dt>
+                        <dd class = "col-sm-8">
+                            @Html.DisplayFor(model => model.Id)
+                        </dd>
+                        <dt class = "col-sm-4">
+                            @Html.DisplayNameFor(model => model.Cpf)
+                        </dt>
+                        <dd class = "col-sm-8">
+                            @Html.DisplayFor(model => model.Cpf)
+                        </dd>
+                        <dt class = "col-sm-4">
+                            @Html.DisplayNameFor(model => model.DataNascimento)
+                        </dt>
+                        <dd class = "col-sm-8">
+                            @Html.DisplayFor(model => model.DataNascimento)
+                        </dd>
+                    </dl>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <a asp-controller="Clientes" asp-action="Update" asp-route-id=@Model.Id><button type="button" class="btn btn-warning">Editar</button></a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
